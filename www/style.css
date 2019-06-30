@@ -385,7 +385,7 @@ figcaption {
 ul, ol {
 	margin-top: 0;
 	margin-bottom: 10px;
-	padding-left: 40px
+	padding-left: 20px
 }
 .w-list-unstyled {
 	padding-left: 0;
@@ -2528,8 +2528,8 @@ figcaption {
 	padding-right: 30px;
 }
 .image-section.get-the-app {
-	background-image: url("background-city.jpg");
-	background-position: 50% 30%;
+	background-image: url("extra.jpg");
+	background-position: 50% 25%;
 }
 .image-section-overlay {
 	width: 100%;
@@ -2571,9 +2571,7 @@ figcaption {
 	display: block;
 	width: 70%;
 	margin-right: auto;
-	margin-left: auto;
 	color: #fff;
-	text-align: center;
 }
 .image-section-overlay-title {
 	font-size: 36px;
@@ -2632,7 +2630,8 @@ figcaption {
 	text-transform: uppercase;
 }
 .hero-description {
-	color: #a3aab8;
+	color: #fff;
+	font-weight: 600;
 }
 .hero-description.light {
 	color: #fff;
@@ -2642,9 +2641,10 @@ figcaption {
 }
 .devices-mockup-right {
 	position: absolute;
-	top: -50px;
-	right: -450px;
-	height: 565px;
+	top: 0px;
+	right: -50px;
+	/* height: 565px; */
+	max-width: 50%;
 }
 .info-block-left {
 	width: 56%;
@@ -2673,8 +2673,8 @@ figcaption {
 }
 .newsletter-form {
 	position: relative;
-	height: 175px;
-	margin-top: -235px;
+	height: 250px;
+	margin-top: -300px;
 	margin-bottom: 110px;
 	padding: 40px;
 	-webkit-justify-content: space-around;
@@ -2685,7 +2685,7 @@ figcaption {
 	-ms-flex-align: center;
 	align-items: center;
 	border-radius: 5px;
-	background-color: #1f6fff;
+	background-color: #55575a;
 	color: #fff;
 }
 .newsletter-column-left {
@@ -4064,8 +4064,8 @@ figcaption {
 	padding-top: 200px;
 	padding-bottom: 130px;
 	background-color: #353942;
-	background-image: -webkit-linear-gradient(315deg, rgba(53, 57, 66, .8), #2a2e36), url("background-city.jpg");
-	background-image: linear-gradient(135deg, rgba(53, 57, 66, .8), #2a2e36), url("background-city.jpg");
+	background-image: -webkit-linear-gradient(135deg, rgba(38, 35, 45, 0.8), rgba(193, 20, 60, 0.6)), url(landing.jpg);
+	background-image: linear-gradient(135deg, rgba(38, 35, 45, 0.8), rgba(193, 20, 60, 0.6)), url(landing.jpg);
 	background-position: 0px 0px, 50% 0px;
 	background-size: auto, cover;
 }
@@ -4245,8 +4245,8 @@ figcaption {
 .subpage-header {
 	padding-top: 190px;
 	padding-bottom: 90px;
-	background-image: -webkit-linear-gradient(135deg, rgba(53, 57, 66, .8), #2a2e36), url("background-city.jpg");
-	background-image: linear-gradient(135deg, rgba(53, 57, 66, .8), #2a2e36), url("background-city.jpg");
+	background-image: -webkit-linear-gradient(135deg, rgba(53, 57, 66, .8), #2a2e36), url("extra.jpg");
+	background-image: linear-gradient(135deg, rgba(53, 57, 66, .8), #2a2e36), url("extra.jpg");
 	background-position: 0px 0px, 50% 50%;
 	background-size: auto, cover;
 	color: #fff;
@@ -5603,6 +5603,35 @@ html.w-mod-js *[data-ix="hide-lightbox"] {
 	display: none;
 	opacity: 0;
 }
+
+a.location-link {
+	text-decoration: none;
+	color: #fff;
+}
+
+.landing-video {
+	height: 255px;
+	max-width: 455px;
+	border-radius: 10px
+}
+
+.landing-container {
+	display: flex;
+}
+
+@media (max-width: 768px) {
+	.landing-video {
+		max-width: 356px;
+		height: 200px;
+	}
+}
+
+@media (max-width: 721px) {
+	.landing-container {
+		display: block;
+	}
+}
+
 @media (max-width: 991px) {
 	li {
 		font-size: 13px;
@@ -5841,8 +5870,8 @@ html.w-mod-js *[data-ix="hide-lightbox"] {
 		margin-bottom: 10px;
 	}
 	.devices-mockup-right {
-		top: -21px;
-		right: -408px;
+		top: 50px;
+		right: -70px;
 	}
 	.info-block-left.ui {
 		width: 55%;
@@ -5850,12 +5879,6 @@ html.w-mod-js *[data-ix="hide-lightbox"] {
 	.info-icon {
 		height: 14px;
 		margin-right: 4px;
-	}
-	.newsletter-form {
-		height: 145px;
-		margin-top: -205px;
-		padding-top: 30px;
-		padding-bottom: 30px;
 	}
 	.newsletter-column-right {
 		padding-top: 10px;
@@ -6131,7 +6154,6 @@ html.w-mod-js *[data-ix="hide-lightbox"] {
 	.iphone-hero {
 		padding-top: 160px;
 		padding-bottom: 80px;
-		padding-left: 45px;
 	}
 	.half-image-section {
 		height: 470px;
@@ -6674,6 +6696,7 @@ html.w-mod-js *[data-ix="hide-lightbox"] {
 		right: 0px;
 		width: 100%;
 		height: auto;
+		max-width: unset;
 	}
 	.info-block-left {
 		width: 100%;

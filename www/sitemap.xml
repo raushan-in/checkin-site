@@ -8,4 +8,12 @@
     <loc>https://check-in.in/privacy</loc>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://check-in.in/terms</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://check-in.in/refund</loc>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>
