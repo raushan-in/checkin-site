@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<meta name="description"
+		content="Experience hassle-free check-in at your nearby favorite restaurants! Satisfy your hunger and order via a tailor-made menu.">
+	<meta name="og:description"
+		content="Experience hassle-free check-in at your nearby favorite restaurants! Satisfy your hunger and order via a tailor-made menu.">
+
+	<title>Login | Checkin</title>
+	<base href="/">
+	<meta content="Checkin app | Reimagine dine-in" property="og:title">
+
+	<link rel="canonical" href="https://check-in.in/" />
+
+	<!-- Material Design Theming -->
+	<link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-indigo.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic%7CSource+Sans+Pro:200,300,regular,italic,600,700,900">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="favicon.png" rel="shortcut icon" type="image/x-icon">
+	<link href="favicon.png" rel="apple-touch-icon">
+
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords"
+		content="checkin, check in, check-in, revolution, restaurant, dineout, food, foodlust, dinner, app, android, promo, loyalty, offers, service, session, menu, order, preferences, connect, reservefree, startup" />
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125410318-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'UA-125410318-1');
+	</script>
+</head>
+
+<body>
+	<div class="navbar w-nav" data-animation="over-right" data-collapse="all" data-doc-height="1" data-duration="200">
+		<div class="w-container">
+			<a class="logo-block no-menu w-nav-brand" href="/"><img class="logo responsive-menu" src="logo.png"></a>
+			<nav class="right-nav-menu w-nav-menu" role="navigation">
+				<a class="color nav-link w-nav-link" href="/" style="max-width: 940px;">Home</a>
+				<a class="color nav-link w-nav-link" href="/#contact" style="max-width: 940px;">Contact Us</a>
+				<div class="nav-menu-content-block">
+					<div class="nav-title">Get the App Now!</div>
+					<p class="nav-paragraph">Quit waiting for the Waiter!</p>
+					<a class="app-store-link-button w-inline-block"
+						href="https://play.google.com/store/apps/details?id=com.checkin.app.checkin">
+						<img class="app-store-button" src="btn_google_play.png">
+					</a>
+				</div>
+			</nav>
+			<div class="menu-button w-nav-button">
+				<div class="w-icon-nav-menu"></div>
+			</div>
+		</div>
+		<div class="w-nav-overlay" data-wf-ignore=""></div>
+	</div>
+
+	<div class="subpage-header">
+			<div class="container w-container">
+				<h2 class="subpage-title" data-ix="fade-in-on-load"
+					style="opacity: 1; transform: translateX(0px) translateY(0px) translateZ(0px); display: block; transition: opacity 500ms ease 0s, transform 500ms ease 0s;">
+					Authentication</h2>
+			</div>
+		</div>
+
+	<div class="section">
+		<div class="container w-container">
+			<div class="info-row w-row">
+				<div class="info-column w-col w-col-12">
+					<div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
+
+						<!-- Container for the demo -->
+						<div id="sign-in-card" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+						<div class="mdl-card__title mdl-color--light-blue-600 mdl-color-text--white">
+							<h2 class="mdl-card__title-text">Authentication</h2>
+						</div>
+
+						<div class="mdl-card__supporting-text mdl-color-text--grey-600" style="text-align: center;">
+							<!-- Button that handles google sign-in -->
+							<p></p>
+							<button disabled class="mdl-button mdl-js-button mdl-button--raised sign-in" id="google-sign-in">
+								<i class="fa fa-google"></i> Sign in with Google
+							</button>
+
+							<p></p>
+							<!-- Button that handles FB sign-in -->
+							<button disabled class="mdl-button mdl-js-button mdl-button--raised sign-in" id="fb-sign-in">
+								<i class="fa fa-facebook"></i> Sign in with FB
+							</button>
+
+							<p></p>
+							<p>Sign in with your phone number below.</p>
+
+							<form id="sign-in-form" action="#">
+							<!-- Input to enter the phone number -->
+							<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="text" pattern="\+[0-9\s\-\(\)]+" id="phone-number">
+								<label class="mdl-textfield__label" for="phone-number">Enter your phone number...</label>
+								<span class="mdl-textfield__error">Input is not an international phone number!</span>
+							</div>
+
+							<!-- Sign-in button -->
+							<button disabled class="mdl-button mdl-js-button mdl-button--raised" id="sign-in-button">Sign-in</button>
+							</form>
+
+							<!-- Button that handles sign-out -->
+							<button class="mdl-button mdl-js-button mdl-button--raised" id="sign-out-button">Sign-out</button>
+
+							<form id="verification-code-form" action="#" style="display: none">
+								<!-- Input to enter the verification code -->
+								<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+									<input class="mdl-textfield__input" type="text" id="verification-code">
+									<label class="mdl-textfield__label" for="verification-code">Enter the verification code...</label>
+								</div>
+
+								<!-- Button that triggers code verification -->
+								<input type="submit" class="mdl-button mdl-js-button mdl-button--raised" id="verify-code-button" value="Verify Code"/>
+								<!-- Button to cancel code verification -->
+								<button class="mdl-button mdl-js-button mdl-button--raised" id="cancel-verify-code-button">Cancel</button>
+							</form>
+						</div>
+						</div>
+
+						<!-- Container for the sign in status and user info -->
+						<div  id="user-details-card" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+						<div class="mdl-card__title mdl-color--light-blue-600 mdl-color-text--white">
+							<h2 class="mdl-card__title-text">User sign-in status</h2>
+						</div>
+						<div class="mdl-card__supporting-text mdl-color-text--grey-600">
+							<!-- Container where we'll display the user details -->
+							<div class="user-details-container">
+							<p>
+								Auth Token <i class="fa fa-clipboard" id="copy-authtoken"></i>: <pre id="auth-token"></pre>
+							</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="simple-footer" style="padding-bottom: 45px;">
+		<div class="container w-container">
+			<div class="footer-row w-row">
+				<div class="footer-logo-column-left w-col w-col-3">
+					<div class="footer-logo">
+						Reservefree Private Limited
+					</div>
+					<div class="footer-logo subtitle">
+						<a class="location-link" href="https://goo.gl/maps/QdN2RkkNwM5g1VZ66" target="_blank"
+							title="Find on Google Maps!">
+							<img class="info-icon" src="ic_checkins.png"> Nasscom Startups Warehouse, Diamond District,
+							Domlur, Bengaluru - 560008
+						</a>
+					</div>
+				</div>
+				<div class="footer-menu-column w-col w-col-6">
+					<a class="footer-inline-link" href="/terms">Terms & Conditions</a>
+					<a class="footer-inline-link" href="/privacy">Privacy Policy</a>
+					<a class="footer-inline-link" href="/refund">Refund Policy</a>
+				</div>
+				<div class="footer-social-col-right w-col w-col-3">
+					<a class="footer-social-icon w-inline-block" href="https://www.facebook.com/checkinapp"
+						target="_blank" title="@checkinapp">
+						<img class="footer-small-social-icon" src="ic_facebook.png">
+					</a>
+					<a class="footer-social-icon w-inline-block" href="https://www.instagram.com/checkin.app/"
+						target="_blank" title="@checkin.app">
+						<img class="footer-small-social-icon" src="ic_instagram.png">
+					</a>
+					<a class="footer-social-icon w-inline-block" href="https://www.linkedin.com/company/checkinindia/"
+						target="_blank" title="@checkinindia">
+						<img class="footer-small-social-icon" src="ic_linkedin.png"></a>
+					<a class="footer-social-icon w-inline-block" href="mailto:info@check-in.in" target="_blank"
+						title="info@check-in.in">
+						<img class="footer-small-social-icon" src="ic_mail.svg">
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript"></script>
+    
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-auth.js"></script>
+
+    <script src="script.js" type="text/javascript"></script>
+    
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyBgbGTaBq24PjvnGKswpumxRxEZ63B2S5A",
+            authDomain: "checkin-app-18.firebaseapp.com",
+            databaseURL: "https://checkin-app-18.firebaseio.com",
+            projectId: "checkin-app-18",
+            storageBucket: "checkin-app-18.appspot.com",
+            messagingSenderId: "759838524399",
+            appId: "1:759838524399:web:b2812dfff83aa40f49ec1a"
+        };
+    
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+	</script>
+	
+	<script type="text/javascript">
+		function oAuthSignIn(provider) {
+			// [START signin]
+			firebase.auth().signInWithPopup(provider).then(function(result) {
+				// This gives you a Google Access Token. You can use it to access the Google API.
+				var token = result.credential.accessToken;
+				// The signed-in user info.
+				var user = result.user;
+				successfulLogin(user, token);
+			}).catch(function(error) {
+				// Handle Errors here.
+				var errorCode = error.code;
+				var errorMessage = error.message;
+				// The email of the user's account used.
+				var email = error.email;
+				// The firebase.auth.AuthCredential type that was used.
+				var credential = error.credential;
+				// [START_EXCLUDE]
+				if (errorCode === 'auth/account-exists-with-different-credential') {
+				alert('You have already signed up with a different auth provider for that email.');
+				// If you are using multiple auth providers on your app you should handle linking
+				// the user's accounts here.
+				} else {
+				console.error(error);
+				}
+				// [END_EXCLUDE]
+			});
+			// [START_EXCLUDE]
+			$('.sign-in').prop('disabled', true);
+			// [END_EXCLUDE]
+		}
+		function googleSignIn() {
+			var provider = new firebase.auth.GoogleAuthProvider();
+			return oAuthSignIn(provider)
+		}
+		function fbSignIn() {
+			var provider = new firebase.auth.FacebookAuthProvider();
+			provider.addScope('user_birthday');
+			return oAuthSignIn(provider)
+		}
+
+		function loginApi(idToken, providerToken) {
+			var url = "https://api.check-in.in/auth/login/"
+			var reqData = {
+				id_token: idToken
+			};
+			if (providerToken)	reqData.provider_token = providerToken;
+			$.post({
+				url: url,
+				crossDomain: true,
+				contentType: "application/json",
+				data: JSON.stringify(reqData),
+				dataType: "json",
+				success: function(data) {
+					document.getElementById('auth-token').innerText = data.token;
+				},
+				error: function(xhr, status) {
+					alert('Unable to login to Checkin with given credentials');
+				}
+			})
+		}
+
+		function successfulLogin(user, providerToken) {
+			user
+			.getIdToken(true)
+			.then(idToken => {
+				loginApi(idToken, providerToken);
+			})
+			.catch(err => {
+				console.error(err);
+			});
+		}
+
+		function copyAuthToken() {
+			var token = document.getElementById('auth-token').innerText
+
+			const el = document.createElement("textarea"); // Create a <textarea> element
+			el.value = token; // Set its value to the string that you want copied
+			el.setAttribute("readonly", ""); // Make it readonly to be tamper-proof
+			el.style.position = "absolute";
+			el.style.left = "-9999px"; // Move outside the screen to make it invisible
+			document.body.appendChild(el); // Append the <textarea> element to the HTML document
+			const selected =
+				document.getSelection().rangeCount > 0 // Check if there is any content selected previously
+				? document.getSelection().getRangeAt(0) // Store selection if found
+				: false; // Mark as false to know no selection existed before
+			el.select(); // Select the <textarea> content
+			document.execCommand("copy"); // Copy - only works as a result of a user action (e.g. click events)
+			document.body.removeChild(el); // Remove the <textarea> element
+			if (selected) {
+				// If a selection existed before copying
+				document.getSelection().removeAllRanges(); // Unselect everything on the HTML document
+				document.getSelection().addRange(selected); // Restore the original selection
+			}
+
+			alert('Copied to clipboard!');
+		}
+		/**
+		 * Set up UI event listeners and registering Firebase auth listeners.
+		 */
+		window.onload = function() {
+		  // Listening for auth state changes.
+		  firebase.auth().onAuthStateChanged(function(user) {
+			if (user) {
+			  // User is signed in.
+			  var uid = user.uid;
+			  var email = user.email;
+			  var photoURL = user.photoURL;
+			  var phoneNumber = user.phoneNumber;
+			  var isAnonymous = user.isAnonymous;
+			  var displayName = user.displayName;
+			  var providerData = user.providerData;
+			  var emailVerified = user.emailVerified;
+			}
+			$('.sign-in').prop('disabled', false);
+			updateSignInButtonUI();
+			updateSignInFormUI();
+			updateSignOutButtonUI();
+			updateVerificationCodeFormUI();
+		  });
+		  // Event bindings.
+		  document.getElementById('google-sign-in').addEventListener('click', googleSignIn, false);
+		  document.getElementById('fb-sign-in').addEventListener('click', fbSignIn, false);
+		  document.getElementById('sign-out-button').addEventListener('click', onSignOutClick);
+		  document.getElementById('phone-number').addEventListener('keyup', updateSignInButtonUI);
+		  document.getElementById('phone-number').addEventListener('change', updateSignInButtonUI);
+		  document.getElementById('verification-code').addEventListener('keyup', updateVerifyCodeButtonUI);
+		  document.getElementById('verification-code').addEventListener('change', updateVerifyCodeButtonUI);
+		  document.getElementById('verification-code-form').addEventListener('submit', onVerifyCodeSubmit);
+		  document.getElementById('cancel-verify-code-button').addEventListener('click', cancelVerification);
+		  document.getElementById('copy-authtoken').addEventListener('click', copyAuthToken);
+		  // [START appVerifier]
+		  window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
+			'size': 'invisible',
+			'callback': function(response) {
+			  // reCAPTCHA solved, allow signInWithPhoneNumber.
+			  onSignInSubmit();
+			}
+		  });
+		  // [END appVerifier]
+		  recaptchaVerifier.render().then(function(widgetId) {
+			window.recaptchaWidgetId = widgetId;
+			updateSignInButtonUI();
+		  });
+		};
+		/**
+		 * Function called when clicking the Login/Logout button.
+		 */
+		function onSignInSubmit() {
+		  if (isPhoneNumberValid()) {
+			window.signingIn = true;
+			updateSignInButtonUI();
+			var phoneNumber = getPhoneNumberFromUserInput();
+			var appVerifier = window.recaptchaVerifier;
+			firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+				.then(function (confirmationResult) {
+				  // SMS sent. Prompt user to type the code from the message, then sign the
+				  // user in with confirmationResult.confirm(code).
+				  window.confirmationResult = confirmationResult;
+				  window.signingIn = false;
+				  updateSignInButtonUI();
+				  updateVerificationCodeFormUI();
+				  updateVerifyCodeButtonUI();
+				  updateSignInFormUI();
+				}).catch(function (error) {
+				  // Error; SMS not sent
+				  console.error('Error during signInWithPhoneNumber', error);
+				  window.alert('Error during signInWithPhoneNumber:\n\n'
+					  + error.code + '\n\n' + error.message);
+				  window.signingIn = false;
+				  updateSignInFormUI();
+				  updateSignInButtonUI();
+				});
+		  }
+		}
+		/**
+		 * Function called when clicking the "Verify Code" button.
+		 */
+		function onVerifyCodeSubmit(e) {
+		  e.preventDefault();
+		  if (!!getCodeFromUserInput()) {
+			window.verifyingCode = true;
+			updateVerifyCodeButtonUI();
+			var code = getCodeFromUserInput();
+			confirmationResult.confirm(code).then(function (result) {
+			  // User signed in successfully.
+			  var user = result.user;
+			  window.verifyingCode = false;
+			  window.confirmationResult = null;
+			  updateVerificationCodeFormUI();
+			  successfulLogin(user);
+			}).catch(function (error) {
+			  // User couldn't sign in (bad verification code?)
+			  console.error('Error while checking the verification code', error);
+			  window.alert('Error while checking the verification code:\n\n'
+				  + error.code + '\n\n' + error.message);
+			  window.verifyingCode = false;
+			  updateSignInButtonUI();
+			  updateVerifyCodeButtonUI();
+			});
+		  }
+		}
+		/**
+		 * Cancels the verification code input.
+		 */
+		function cancelVerification(e) {
+		  e.preventDefault();
+		  window.confirmationResult = null;
+		  updateVerificationCodeFormUI();
+		  updateSignInFormUI();
+		}
+		/**
+		 * Signs out the user when the sign-out button is clicked.
+		 */
+		function onSignOutClick() {
+		  firebase.auth().signOut();
+		}
+		/**
+		 * Reads the verification code from the user input.
+		 */
+		function getCodeFromUserInput() {
+		  return document.getElementById('verification-code').value;
+		}
+		/**
+		 * Reads the phone number from the user input.
+		 */
+		function getPhoneNumberFromUserInput() {
+		  return document.getElementById('phone-number').value;
+		}
+		/**
+		 * Returns true if the phone number is valid.
+		 */
+		function isPhoneNumberValid() {
+		  var pattern = /^\+[0-9\s\-\(\)]+$/;
+		  var phoneNumber = getPhoneNumberFromUserInput();
+		  return phoneNumber.search(pattern) !== -1;
+		}
+		/**
+		 * Re-initializes the ReCaptacha widget.
+		 */
+		function resetReCaptcha() {
+		  if (typeof grecaptcha !== 'undefined'
+			  && typeof window.recaptchaWidgetId !== 'undefined') {
+			grecaptcha.reset(window.recaptchaWidgetId);
+		  }
+		}
+		/**
+		 * Updates the Sign-in button state depending on ReCAptcha and form values state.
+		 */
+		function updateSignInButtonUI() {
+		  document.getElementById('sign-in-button').disabled =
+			  !isPhoneNumberValid()
+			  || !!window.signingIn;
+		}
+		/**
+		 * Updates the Verify-code button state depending on form values state.
+		 */
+		function updateVerifyCodeButtonUI() {
+		  document.getElementById('verify-code-button').disabled =
+			  !!window.verifyingCode
+			  || !getCodeFromUserInput();
+		}
+		/**
+		 * Updates the state of the Sign-in form.
+		 */
+		function updateSignInFormUI() {
+		  if (firebase.auth().currentUser || window.confirmationResult) {
+			document.getElementById('sign-in-form').style.display = 'none';
+			$('.sign-in').hide();
+		  } else {
+			resetReCaptcha();
+			document.getElementById('sign-in-form').style.display = 'block';
+			$('.sign-in').show();
+		  }
+		}
+		/**
+		 * Updates the state of the Verify code form.
+		 */
+		function updateVerificationCodeFormUI() {
+		  if (!firebase.auth().currentUser && window.confirmationResult) {
+			document.getElementById('verification-code-form').style.display = 'block';
+		  } else {
+			document.getElementById('verification-code-form').style.display = 'none';
+		  }
+		}
+		/**
+		 * Updates the state of the Sign out button.
+		 */
+		function updateSignOutButtonUI() {
+		  if (firebase.auth().currentUser) {
+			document.getElementById('sign-out-button').style.display = 'block';
+		  } else {
+			document.getElementById('sign-out-button').style.display = 'none';
+		  }
+		}
+	  </script>
+</body>
+
+</html>
