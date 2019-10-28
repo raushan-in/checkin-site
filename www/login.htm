@@ -85,6 +85,16 @@
 						</div>
 
 						<div class="mdl-card__supporting-text mdl-color-text--grey-600" style="text-align: center;">
+							<p></p>
+							<b>API Mode:</b>
+							<label>
+								<input type="radio" name="apiBase" value="dev" style="margin-left: 30px;" checked />
+								Development
+							</label>
+							<label>
+								<input type="radio" name="apiBase" value="prod" style="margin-left: 30px;" />
+								Production
+							</label>
 							<!-- Button that handles google sign-in -->
 							<p></p>
 							<button disabled class="mdl-button mdl-js-button mdl-button--raised sign-in" id="google-sign-in">
@@ -254,8 +264,20 @@
 			return oAuthSignIn(provider)
 		}
 
+		function getBaseUrl() {
+			elems = document.getElementsByName("apiBase");
+			let apiBase = "dev";
+			for (let elem of elems) {
+				if (elem.checked) {
+					apiBase = elem.value;
+					break;
+				}
+			}
+			return apiBase == "prod" ? "https://api.check-in.in/" : "https://dev.api.check-in.in/";
+		}
+
 		function loginApi(idToken, providerToken) {
-			var url = "https://dev.api.check-in.in/auth/login/"
+			var url = getBaseUrl() + "auth/login/";
 			var reqData = {
 				id_token: idToken
 			};
