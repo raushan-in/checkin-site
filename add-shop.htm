@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<meta name="description"
+		content="Experience hassle-free check-in at your nearby favorite restaurants! Satisfy your hunger and order via a tailor-made menu.">
+	<meta name="og:description"
+		content="Experience hassle-free check-in at your nearby favorite restaurants! Satisfy your hunger and order via a tailor-made menu.">
+
+	<title>Add Shop | Checkin</title>
+	<base href="/">
+	<meta content="Checkin app | Reimagine dine-in" property="og:title">
+
+	<link rel="canonical" href="https://check-in.in/" />
+
+	<!-- Material Design Theming -->
+	<link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-indigo.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic%7CSource+Sans+Pro:200,300,regular,italic,600,700,900">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="favicon.png" rel="shortcut icon" type="image/x-icon">
+	<link href="favicon.png" rel="apple-touch-icon">
+
+	<meta name="robots" content="index, follow" />
+	<meta name="keywords"
+		content="checkin, check in, check-in, revolution, restaurant, dineout, food, foodlust, dinner, app, android, promo, loyalty, offers, service, session, menu, order, preferences, connect, reservefree, startup" />
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125410318-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'UA-125410318-1');
+	</script>
+</head>
+
+<body>
+	<div class="navbar w-nav" data-animation="over-right" data-collapse="all" data-doc-height="1" data-duration="200">
+		<div class="w-container">
+			<a class="logo-block no-menu w-nav-brand" href="/"><img class="logo responsive-menu" src="logo.png"></a>
+			<nav class="right-nav-menu w-nav-menu" role="navigation">
+				<a class="color nav-link w-nav-link" href="/" style="max-width: 940px;">Home</a>
+				<a class="color nav-link w-nav-link" href="/#contact" style="max-width: 940px;">Contact Us</a>
+				<div class="nav-menu-content-block">
+					<div class="nav-title">Get the App Now!</div>
+					<p class="nav-paragraph">Quit waiting for the Waiter!</p>
+					<a class="app-store-link-button w-inline-block"
+						href="https://play.google.com/store/apps/details?id=com.checkin.app.checkin">
+						<img class="app-store-button" src="btn_google_play.png">
+					</a>
+				</div>
+			</nav>
+			<div class="menu-button w-nav-button">
+				<div class="w-icon-nav-menu"></div>
+			</div>
+		</div>
+		<div class="w-nav-overlay" data-wf-ignore=""></div>
+	</div>
+
+	<div class="subpage-header">
+			<div class="container w-container">
+				<h2 class="subpage-title" data-ix="fade-in-on-load"
+					style="opacity: 1; transform: translateX(0px) translateY(0px) translateZ(0px); display: block; transition: opacity 500ms ease 0s, transform 500ms ease 0s;">
+					Add New Restaurant</h2>
+			</div>
+		</div>
+
+	<div class="section" >
+		<div class="container w-container">
+			<div class="info-row w-row">
+				<div class="info-column w-col w-col-12">
+					<div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
+
+						<!-- Container for the demo -->
+						<div id="sign-in-card" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+
+						<div class="mdl-card__title mdl-color--light-blue-600 mdl-color-text--white">
+							<h2 class="mdl-card__title-text">New Restaurant Form</h2>
+						</div>
+
+						<div class="mdl-card__supporting-text mdl-color-text--grey-900" style="text-align: center; display: block;">
+							<form id="phone-number-form" action="#" autocomplete="off">
+                            <i class="fa fa-phone"></i> &nbsp;
+                            <!-- Input to enter the phone number -->
+							<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" >     
+								<input class="mdl-textfield__input" type="text" pattern="\+[0-9\s\-\(\)]+" id="phone-number"/>
+								<label class="mdl-textfield__label" for="phone-number">Enter business phone number</label>
+								<span class="mdl-textfield__error">Input is not an international phone number!</span>
+                                
+                            <!-- Veify button -->
+                            <span style="float: right">
+                                <button disabled class="mdl-button mdl-js-button mdl-button--raised" id="verify-button">Verify</button>
+                            </span>
+                            </div>
+							</form>
+
+							<form id="verification-code-form" action="#" style="display: none" autocomplete="off">
+								<!-- Input to enter the verification code -->
+								<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+									<input class="mdl-textfield__input" type="text" id="verification-code">
+									<label class="mdl-textfield__label" for="verification-code">Enter the 6 digit OTP you received.</label>
+								</div>
+								<!-- Button that triggers code verification -->
+                                <input type="submit" class="mdl-button mdl-js-button mdl-button--raised" id="verify-OTP-button" value="Submit"/>
+                            </form>
+
+
+                            <form id="shop-detail-form" action="#" style="display: none" autocomplete="off">
+
+                                <input type="text" id="phone_token" name="phone_token" value="" style="display: none">
+                                <input type="text" id="state" name="state" value="" style="display: none">
+
+                                <div style="text-align: center; display: block; padding-block-start: 3%">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="padding-right: 4%">
+                                            <input class="mdl-textfield__input" type="text" id="restaurant-name" name="restaurant-name">
+                                            <label class="mdl-textfield__label" for="restaurant-name">Restaurant Name.</label>
+                                    </div>
+
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            <input class="mdl-textfield__input" type="email" id="business-email" name="business-email">
+                                            <label class="mdl-textfield__label" for="business-email">Business Email.</label>
+                                            <span class="mdl-textfield__error">Input is not a valid email.</span>
+                                    </div>
+
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="padding-right: 4%">
+                                            <input class="mdl-textfield__input" type="text"  pattern="\d{2}[A-Z]{5}\d{4}[A-Z]{1}[A-Z\d]{1}[Z]{1}[A-Z\d]{1}" id="gst" name="gst">
+                                            <label class="mdl-textfield__label" for="GST">GST Number</label>
+                                            <span class="mdl-textfield__error">Input is not a valid GST number.</span>
+                                    </div>
+
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            <input class="mdl-textfield__input" type="text" id="locality" name="locality">
+                                            <label class="mdl-textfield__label" for="locality">Locality</label>
+                                    </div>
+
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="padding-right: 4%">
+                                            <select class="mdl-textfield__input" id="city" name="city">
+                                              <option value=""></option>
+                                              <option value="Bengaluru">Bengaluru</option>
+                                              <option value="Delhi">Delhi & NCR</option>
+                                              <option value="Goa">Goa</option>
+                                              <option value="Mumbai">Mumbai</option>
+                                              <option value="Varanasi">Varanasi</option>
+                                            </select>
+                                            <label class="mdl-textfield__label" for="city">Select City</label>
+                                    </div>
+                                        
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="align-content: center">
+                                            <input class="mdl-textfield__input" type="text" pattern="[0-9]{6}" maxlength="6" id='pin' name='pin'>
+                                            <label class="mdl-textfield__label" for="pin">Postal Pin</label>
+                                            <span class="mdl-textfield__error">Input is not a valid postal pin code.</span>
+                                    </div>
+
+                                    
+                                    <div id="map_container" style="display: none">
+                                    <div  id="gMap" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+                                
+                                    </div>
+                                    <input type="text" id="address" style="width:600px;"/><br/>
+                                    <input type="text" id="latitude" placeholder="Latitude" disabled/>
+                                    <input type="text" id="longitude" placeholder="Longitude"disabled/>
+                                    </div><br>
+
+                                        </div>
+                                    <!-- Button that triggers code verification -->
+                                    <input type="submit" class="mdl-button mdl-js-button mdl-button--raised" id="final-submit" value="Submit"/>
+                            </form>
+						</div>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="simple-footer" style="padding-bottom: 45px;">
+		<div class="container w-container">
+			<div class="footer-row w-row">
+				<div class="footer-logo-column-left w-col w-col-3">
+					<div class="footer-logo">
+						Reservefree Private Limited
+					</div>
+					<div class="footer-logo subtitle">
+						<a class="location-link" href="https://goo.gl/maps/QdN2RkkNwM5g1VZ66" target="_blank"
+							title="Find on Google Maps!">
+							<img class="info-icon" src="ic_checkins.png"> Nasscom Startups Warehouse, Diamond District,
+							Domlur, Bengaluru - 560008
+						</a>
+					</div>
+				</div>
+				<div class="footer-menu-column w-col w-col-6">
+					<a class="footer-inline-link" href="/terms">Terms & Conditions</a>
+					<a class="footer-inline-link" href="/privacy">Privacy Policy</a>
+					<a class="footer-inline-link" href="/refund">Refund Policy</a>
+				</div>
+				<div class="footer-social-col-right w-col w-col-3">
+					<a class="footer-social-icon w-inline-block" href="https://www.facebook.com/checkinapp"
+						target="_blank" title="@checkinapp">
+						<img class="footer-small-social-icon" src="ic_facebook.png">
+					</a>
+					<a class="footer-social-icon w-inline-block" href="https://www.instagram.com/checkin.app/"
+						target="_blank" title="@checkin.app">
+						<img class="footer-small-social-icon" src="ic_instagram.png">
+					</a>
+					<a class="footer-social-icon w-inline-block" href="https://www.linkedin.com/company/checkinindia/"
+						target="_blank" title="@checkinindia">
+						<img class="footer-small-social-icon" src="ic_linkedin.png"></a>
+					<a class="footer-social-icon w-inline-block" href="mailto:info@check-in.in" target="_blank"
+						title="info@check-in.in">
+						<img class="footer-small-social-icon" src="ic_mail.svg">
+					</a>
+				</div>
+			</div>
+		</div>
+    </div>
+
+    <!-- ///////////////script///////////////////-->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-auth.js"></script>
+    <script src="script.js" type="text/javascript"></script>
+    <script src="map-helper.js" type="text/javascript"></script>
+
+    
+    <script>
+            var firebaseConfig = {
+                apiKey: "AIzaSyBgbGTaBq24PjvnGKswpumxRxEZ63B2S5A",
+                authDomain: "checkin-app-18.firebaseapp.com",
+                databaseURL: "https://checkin-app-18.firebaseio.com",
+                projectId: "checkin-app-18",
+                storageBucket: "checkin-app-18.appspot.com",
+                messagingSenderId: "759838524399",
+                appId: "1:759838524399:web:b2812dfff83aa40f49ec1a"
+            };
+
+            const BASE_API =  "https://api.check-in.in/";
+        
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+    </script>
+	
+	<script>
+    /**
+     * on page load
+    */    
+	$( document ).ready(function() {
+        clearAuth();
+        var is_verified =false
+        document.getElementById('verify-button').style.display = 'none';
+
+    /**
+     * reCAPTCHA verification widget
+     */
+    // [START appVerifier]
+        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('verify-button', {
+                'size': 'invisible',
+                'callback': function(response) {
+                // reCAPTCHA solved, allow OTP verify.
+                onPhoneNumberSubmit();
+                }
+            });
+            // [END appVerifier]
+            recaptchaVerifier.render().then(function(widgetId) {
+                window.recaptchaWidgetId = widgetId;
+                updateVerifyButtonUI();
+            });
+    });
+
+    /**
+     * Event Listener 
+     */
+     $("#phone-number").focus(function(){updateSTDcode();});
+     $("#phone-number").blur(function(){updateSTDcode();});
+     $("#phone-number").change(function(){verifyPhoneInput();});
+     $("#phone-number").keyup(function(){verifyPhoneInput();});
+     $("#pin").keyup(function(){zoomInArea();});
+
+     $("#verification-code").change(function(){updateOTPsubmitButtonUI();});
+     $("#verification-code").keyup(function(){updateOTPsubmitButtonUI();});
+
+     document.getElementById('verification-code-form').addEventListener('submit', onVerifyCodeSubmit);
+     document.getElementById('shop-detail-form').addEventListener('submit', validatedetails);
+
+     ////////////////////
+
+
+    /**
+     * helper function
+    */
+   const ind_std = "+91"
+    function updateSTDcode(){
+        var phoneNumber = getPhoneNumberFromUserInput();
+        if (phoneNumber.length == 0){
+            $('#phone-number').val(ind_std)
+        }
+        else if (phoneNumber == ind_std){
+            $('#phone-number').val('')
+        }
+    }
+    
+    function verifyPhoneInput(){
+        var phoneNumber = getPhoneNumberFromUserInput();
+        if (phoneNumber.length > 12){
+            document.getElementById('verify-button').style.display = 'block';
+            updateVerifyButtonUI()
+        }else{
+            document.getElementById('verify-button').style.display = 'none';
+        }
+    }
+
+    function getPhoneNumberFromUserInput() {
+		  return $('#phone-number').val()
+    }
+
+    /**
+     * Returns true if the phone number is valid.
+     */
+    function isPhoneNumberValid() {
+        var pattern = /^\+[0-9\s\-\(\)]+$/;
+        var phoneNumber = getPhoneNumberFromUserInput();
+        return phoneNumber.search(pattern) !== -1;
+    }
+
+    /**
+     * Updates the state of the Sign-in form.
+     */
+    function updatePhoneNumberFormUI() {
+        if (firebase.auth().currentUser || window.confirmationResult) {
+        document.getElementById('phone-number-form').style.display = 'none';
+        $('.sign-in').hide();
+        is_verified =false
+        } else {
+        resetReCaptcha();
+        document.getElementById('phone-number-form').style.display = 'block';
+        $('.sign-in').show();
+        is_verified =false
+        }
+    }
+
+    /**
+     * Updates the verify button state depending on ReCAptcha and form values state.
+     */
+    function updateVerifyButtonUI() {
+        document.getElementById('verify-button').disabled =
+            !isPhoneNumberValid() || !!window.signingIn;
+    }
+
+    /**
+     * Updates the state of the Verify code form.
+     */
+    function updateOTPFormUI() {
+        if (!firebase.auth().currentUser && window.confirmationResult) {
+        document.getElementById('verification-code-form').style.display = 'block';
+        } else {
+        is_verified = true;
+        document.getElementById('verification-code-form').style.display = 'none';
+        }
+    }
+
+    /**
+     * Updates the Verify-OTP-code button state depending on form values state.
+     */
+    function updateOTPsubmitButtonUI() {
+        document.getElementById('verify-OTP-button').disabled =
+            !!window.verifyingCode || !getCodeFromUserInput();
+    }
+
+    /**
+     * Updates the state of the shop detail form.
+     */
+    function updateShopDetailFormUI(){
+        if (firebase.auth().currentUser || is_verified) {
+			document.getElementById('shop-detail-form').style.display = 'block';
+        } else {
+            document.getElementById('shop-detail-form').style.display = 'none';
+        }
+    }
+
+
+    /**
+     * Reads the verification code from the user input.
+     */
+    function getCodeFromUserInput() {
+        return document.getElementById('verification-code').value;
+    }
+
+
+    /**
+     * Reads the phone number from the user input.
+     */
+    function getPhoneNumberFromUserInput() {
+        return document.getElementById('phone-number').value;
+    }
+    
+    
+    /**
+     * Re-initializes the ReCaptacha widget.
+     */
+    function resetReCaptcha() {
+        if (typeof grecaptcha !== 'undefined'
+            && typeof window.recaptchaWidgetId !== 'undefined') {
+        grecaptcha.reset(window.recaptchaWidgetId);
+        }
+    }
+
+    /**
+     * setting the phone token returned from successful OTP verification
+    */
+   function setPhoneToken(token){
+       $('#phone_token').val(token)
+   }
+
+   /**
+     * destroy the auth by current phone
+    */
+   function clearAuth() {
+        firebase.auth().signOut();
+    }
+
+
+    /**
+     * Function called when reCAPTCHA solved.
+     */
+    function onPhoneNumberSubmit() {
+        if (isPhoneNumberValid()) {
+        window.signingIn = true;
+        updateVerifyButtonUI();
+        var phoneNumber = getPhoneNumberFromUserInput();
+        var appVerifier = window.recaptchaVerifier;
+        firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+            .then(function (confirmationResult) {
+                window.confirmationResult = confirmationResult;
+                window.signingIn = false;
+                updatePhoneNumberFormUI();
+                updateVerifyButtonUI();   
+                updateOTPFormUI();  
+                updateOTPsubmitButtonUI();   
+                
+            }).catch(function (error) {
+                // Error; SMS not sent
+                swal("Error!", error.code, "error")
+                window.signingIn = false;
+                updatePhoneNumberFormUI();
+                updateVerifyButtonUI();
+            });
+        }
+    }
+    
+    /**
+     * Function called when clicking the "Verify Code" button.
+     */
+    function onVerifyCodeSubmit(e) {
+        e.preventDefault();
+		  if (!!getCodeFromUserInput()) {
+			window.verifyingCode = true;
+			updateOTPsubmitButtonUI();
+			var code = getCodeFromUserInput();
+			confirmationResult.confirm(code).then(function (result) {
+            // User signed in successfully.
+            var user = result.user;
+            window.verifyingCode = false;
+            window.confirmationResult = null;
+            let phone_token = getPhoneIdToken(user);
+            updateOTPFormUI();
+            updateShopDetailFormUI();
+            setPhoneToken(phone_token);
+        }).catch(function (error) {
+            // User couldn't sign in (bad verification code?)
+            swal('Error in verification', error.code, "error");
+            window.verifyingCode = false;
+            resetReCaptcha();
+            updateVerifyButtonUI();
+            updateOTPsubmitButtonUI();
+        });
+        }
+    }
+
+    
+    function validatedetails(e){
+        e.preventDefault();
+        var $inputs = $('#shop-detail-form :input');
+        res = validate_inputs($inputs)
+        if (res){
+            sendToServer()
+        }
+    }
+
+    function validate_inputs($inputs){
+        if($inputs.first().val().length === 0){
+            swal("Error!", "Error occoured while validating phone number.", "error")
+            clearAuth();
+            return false
+        }
+        res = true
+        let city = $('#city').val()
+        if(city.length > 0){
+            let state = getState(city);
+            $('state').val(state)
+        }
+
+        $inputs.each(function() {
+            if( $(this).val().length === 0){
+                swal("", "Required field is missing.", "error")
+            return false
+            }
+        });
+        return true;
+    }
+
+    function getPhoneIdToken(user) {
+        user.getIdToken(true).then(idToken => {
+            return idToken;
+        })
+        .catch(err => {
+            console.error(err);
+            swal("Error in Phone Id!",err,"error")
+        });
+    }
+
+    function disableSubmit() {
+        $("final-submit").value("Processing..")
+        $('final-submit').attr("disabled", true);
+    }
+    function enableSubmit() {
+        $("final-submit").value("Submit")
+        $('final-submit').attr("disabled", false);
+    }
+
+    function getState(city) {
+        if(city == "Delhi") return "Delhi"
+        if(city == "Varanasi") return "U.P"
+        if(city == "Bengaluru") return "KA"
+        if(city == "Mumbai") return "MH"
+        if(city == "Goa") return "GOA" 
+    }
+
+
+    function sendToServer() {
+        disableSubmit();
+        let DATA = {
+                "name": $("#restaurant-name").val(),
+                "phone_token": $("#phone_token").val(),
+                "email": $("#business-email").val(),
+                "gstin": $("#gst").val(),
+                "location": {
+                    "address": $("#address").val(),
+                    "locality": $("#locality").val(),
+                    "point": {
+                    "latitude": $("#latitude").val(),
+                    "longitude": $("#longitude").val()
+                     },
+                "pincode": $("#pin").val(),
+                "city": $("#city").val(),
+                "state": $("#state").val(),
+                "country": "IN"
+                 }
+                }
+            $.post({
+                url: url,
+                type:"POST",
+				crossDomain: true,
+				contentType: "application/json",
+				data: JSON.stringify(DATA),
+				dataType: "json",
+				success: function(data) {
+        
+            if(result['status'] == 201){
+                clearAuth();
+                swal("Successfully Submitted","","success");
+                setTimeout(function(){ location.reload(); }, 1000);
+            }else{
+                swal("Error","Error occoured while submiting data","error")
+                enableSubmit()
+                return
+            }
+        }
+    })
+}
+
+    //////////////////
+    </script>
+   
+</body>
+
+</html>
