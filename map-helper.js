@@ -1,6 +1,6 @@
 
 const geocode_api = "https://maps.googleapis.com/maps/api/geocode/json";
-const geocoding_api_key = "AIzaSyBjgF13pNltnI3tt0ChbjO_NJz-LQ4mDUc";
+const geocoding_api_key = "#";
 
 var script = document.createElement('script');
 script.type = 'text/javascript';
